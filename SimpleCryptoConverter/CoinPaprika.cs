@@ -12,8 +12,8 @@ namespace SimpleCryptoConverter
         public static async Task<string> Convert(string baseCurrencyId, string quoteCurrencyId, double amount)
         {
             var url = (ApiUrl + "/price-converter").AddParameterToUrl("base_currency_id", baseCurrencyId.ToLower())
-                .AddParameterToUrl("quote_currency_id", quoteCurrencyId.ToLower()).AddParameterToUrl("amount", amount);
-            
+                .AddParameterToUrl("quote_currency_id", quoteCurrencyId.ToLower()).AddParameterToUrl("amount", amount).Replace(',','.');
+
             ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
             
             var client = new HttpClient();
